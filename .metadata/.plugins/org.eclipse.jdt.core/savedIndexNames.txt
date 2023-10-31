@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\Users\niico\OneDrive\Escritorio\Proyecto Java - neoris\.metadata\.plugins\org.eclipse.jdt.core
+2707055640.index
+3980493433.index
+1865797976.index
+1178475969.index
