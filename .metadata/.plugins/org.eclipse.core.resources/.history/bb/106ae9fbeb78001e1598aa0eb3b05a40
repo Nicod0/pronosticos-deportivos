@@ -1,0 +1,5 @@
+package org.curso.pronosticos_deportivos;
+
+public class Equipo {
+
+}
