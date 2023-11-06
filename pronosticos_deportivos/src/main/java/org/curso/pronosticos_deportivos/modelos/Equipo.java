@@ -1,4 +1,4 @@
-package org.curso.pronosticos_deportivos;
+package org.curso.pronosticos_deportivos.modelos;
 
 public class Equipo {
 
