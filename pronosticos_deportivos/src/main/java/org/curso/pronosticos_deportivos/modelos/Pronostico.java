@@ -1,29 +1,36 @@
 package org.curso.pronosticos_deportivos.modelos;
 
-import com.opencsv.bean.CsvBindByPosition;
+import org.curso.pronosticos_deportivos.enumeraciones.ResultadoEnum;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter @Getter
+@Getter @Setter
 public class Pronostico {
-
-	@CsvBindByPosition(position = 0)
-	private String nombreJugador;
 	
-	@CsvBindByPosition(position = 1)
-	private String nombreEquipo1;
+	private Partido partido;
+	private ResultadoEnum resultado;
 	
-	@CsvBindByPosition(position = 2)
-	private String ganaEquipo1;
+	public Pronostico(PronosticoCsv pronosticoCsv) {
+		Partido partido = new Partido();
+		partido.setEquipo1(new Equipo(pronosticoCsv.getNombreEquipo1()));
+		partido.setEquipo2(new Equipo(pronosticoCsv.getNombreEquipo2()));
+		this.setPartido(partido);
+		
+		this.setResultado(convertirResultado(pronosticoCsv));
+	}
 	
-	@CsvBindByPosition(position = 3)
-	private String empate;
-	
-	@CsvBindByPosition(position = 4)
-	private String ganaEquipo2; 
-	
-	@CsvBindByPosition(position = 5)
-	private String nombreEquipo2;
-	
+	public ResultadoEnum convertirResultado(PronosticoCsv pronosticoCsv) {
+		
+		if(pronosticoCsv.getGanaEquipo1().equalsIgnoreCase("x")) {
+			return ResultadoEnum.LOCAL;
+		}
+		
+		if(pronosticoCsv.getGanaEquipo2().equalsIgnoreCase("x")) {
+			return ResultadoEnum.VISITANTE;
+		}
+		
+		return ResultadoEnum.EMPATE;
+	}
+ 
 }
