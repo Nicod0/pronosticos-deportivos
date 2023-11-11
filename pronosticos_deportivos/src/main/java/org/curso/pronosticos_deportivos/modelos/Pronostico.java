@@ -33,4 +33,4 @@ public class Pronostico {
 		return ResultadoEnum.EMPATE;
 	}
  
-}
+} 
