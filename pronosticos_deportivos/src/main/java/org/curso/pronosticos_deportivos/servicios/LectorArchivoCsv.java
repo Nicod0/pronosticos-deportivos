@@ -14,8 +14,11 @@ import org.curso.pronosticos_deportivos.modelos.Pronostico;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class LectorArchivoCsv {
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Partido> leerPartidoCsv(String rutaPartido) {
 		
@@ -23,7 +26,8 @@ public class LectorArchivoCsv {
 		List<Partido> partidos = new ArrayList<Partido>();
 		
 		try {
-			lineasPartidoCsv = new CsvToBeanBuilder(new FileReader(rutaPartido, StandardCharsets.UTF_8))
+			lineasPartidoCsv = new CsvToBeanBuilder(new FileReader(rutaPartido))
+      //lineasPartidoCsv = new CsvToBeanBuilder(new FileReader(rutaPartido, StandardCharsets.UTF_8))
 					.withSkipLines(1)
 					.withType(PartidoCsv.class)
 					.build().parse();
@@ -35,39 +39,40 @@ public class LectorArchivoCsv {
 			}
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("No se encuantra el archivo especificado");
+			System.out.println("No se encuentra el archivo especificado");
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IOException ex) {
 			System.out.println("Error al leer el archivo");
-			e.printStackTrace();
+			ex.printStackTrace();
 		}
 			
 		return partidos;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Pronostico> leerPronosticoCsv(String rutaPronostico) {
+	public List<Pronostico> leerPronosticoCsv(String rutaPronostico, List<Partido> partidos) {
 		
 		List<PronosticoCsv> lineasPronosticoCsv = null;
 		List<Pronostico> pronosticos = new ArrayList<Pronostico>();
 		
 		try {
-			lineasPronosticoCsv = new CsvToBeanBuilder(new FileReader(rutaPronostico, StandardCharsets.UTF_8))
+			lineasPronosticoCsv = new CsvToBeanBuilder(new FileReader(rutaPronostico))
+      //lineasPronosticoCsv = new CsvToBeanBuilder(new FileReader(rutaPronostico, StandardCharsets.UTF_8))
 					.withSkipLines(1)
 					.withType(PronosticoCsv.class)
 					.build().parse();
 			
 			for (PronosticoCsv pronosticoCsv : lineasPronosticoCsv) {
-				Pronostico pronostico = new Pronostico(pronosticoCsv);
+				Pronostico pronostico = new Pronostico(pronosticoCsv, partidos);
 				pronosticos.add(pronostico);
 			}
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("No se encuantra el archivo especificado");
+			System.out.println("No se encuentra el archivo especificado");
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IOException ex) {
 			System.out.println("Error al leer el archivo");
-			e.printStackTrace();
+			ex.printStackTrace();
 		}
 			
 		return pronosticos;
