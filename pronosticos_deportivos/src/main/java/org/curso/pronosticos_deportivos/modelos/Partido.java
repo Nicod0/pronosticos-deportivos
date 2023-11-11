@@ -21,13 +21,13 @@ public class Partido {
 		this.setGolesEquipo2(Integer.parseInt(partidoCsv.getGolesEquipo2()));
 	}
 	
-	public ResultadoEnum resultado(Partido partido) {
+	public ResultadoEnum resultado() {
 		
-		if(partido.getGolesEquipo1() > partido.getGolesEquipo2()) {
+		if(this.getGolesEquipo1() > this.getGolesEquipo2()) {
 			return ResultadoEnum.LOCAL;
 		}  
 		
-		if(partido.getGolesEquipo1() < partido.getGolesEquipo2()) {
+		if(this.getGolesEquipo1() < this.getGolesEquipo2()) {
 			return ResultadoEnum.VISITANTE;
 		}
 		
