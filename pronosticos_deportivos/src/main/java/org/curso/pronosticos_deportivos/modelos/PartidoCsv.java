@@ -15,10 +15,10 @@ public class PartidoCsv {
 	private String NombreEquipo1;
 	
 	@CsvBindByPosition(position = 2, required = true)
-	private String golesEquipo1;
+	private Integer golesEquipo1;
 	
 	@CsvBindByPosition(position = 3, required = true)
-	private String golesEquipo2;
+	private Integer golesEquipo2;
 	
 	@CsvBindByPosition(position = 4, required = true)
 	private String NombreEquipo2;

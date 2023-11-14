@@ -17,8 +17,8 @@ public class Partido {
 	public Partido(PartidoCsv partidoCsv) {
 		this.setEquipo1(new Equipo(partidoCsv.getNombreEquipo1()));
 		this.setEquipo2(new Equipo(partidoCsv.getNombreEquipo2()));
-		this.setGolesEquipo1(Integer.parseInt(partidoCsv.getGolesEquipo1()));
-		this.setGolesEquipo2(Integer.parseInt(partidoCsv.getGolesEquipo2()));
+		this.setGolesEquipo1(partidoCsv.getGolesEquipo1());
+		this.setGolesEquipo2(partidoCsv.getGolesEquipo2());
 	}
 	
 	public ResultadoEnum resultado() {
