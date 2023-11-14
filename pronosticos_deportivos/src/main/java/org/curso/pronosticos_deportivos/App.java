@@ -13,8 +13,8 @@ public class App
     {
         String rutaAbsoluta = System.getProperty("user.dir");
         LectorArchivoCsv lector = new LectorArchivoCsv();
-        List<Partido> partidos = lector.leerPartidoCsv(rutaAbsoluta + "\\src\\main\\java\\org\\curso\\pronosticos_deportivos\\recursos\\resultados.csv");
-        List<Pronostico> pronosticos = lector.leerPronosticoCsv(rutaAbsoluta + "\\src\\main\\java\\org\\curso\\pronosticos_deportivos\\recursos\\pronosticos.csv", partidos);
+        List<Partido> partidos = lector.leerPartidoCsv(rutaAbsoluta + "\\src\\main\\resources\\resultados.csv");
+        List<Pronostico> pronosticos = lector.leerPronosticoCsv(rutaAbsoluta + "\\src\\main\\resources\\\\pronosticos.csv", partidos);
 
         Integer puntaje = CalculadoraPuntajes.calcularPuntaje(pronosticos, partidos);
 
