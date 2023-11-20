@@ -14,13 +14,6 @@ public class Partido {
 	private Integer golesEquipo1;
 	private Integer golesEquipo2;
 	
-	public Partido(PartidoCsv partidoCsv) {
-		this.setEquipo1(new Equipo(partidoCsv.getNombreEquipo1()));
-		this.setEquipo2(new Equipo(partidoCsv.getNombreEquipo2()));
-		this.setGolesEquipo1(partidoCsv.getGolesEquipo1());
-		this.setGolesEquipo2(partidoCsv.getGolesEquipo2());
-	}
-	
 	public ResultadoEnum resultado() {
 		
 		if(this.getGolesEquipo1() > this.getGolesEquipo2()) {
@@ -33,5 +26,12 @@ public class Partido {
 		
 		return ResultadoEnum.EMPATE;
 	}
+
+	@Override
+	public String toString() {
+		return equipo1.getNombre() + " " + golesEquipo1 + " | " + golesEquipo2
+				+ " " + equipo2.getNombre();
+	}
+	
 	
 }

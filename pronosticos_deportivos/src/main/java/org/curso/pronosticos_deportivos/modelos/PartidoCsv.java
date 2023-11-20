@@ -9,7 +9,7 @@ import lombok.Setter;
 public class PartidoCsv {
 
 	@CsvBindByPosition(position = 0, required = true)
-	private String ronda;
+	private Integer ronda;
 	
 	@CsvBindByPosition(position = 1, required = true)
 	private String NombreEquipo1;

@@ -1,5 +1,25 @@
 Participante,Equipo1,Gan1,Empata,Gan2,Equipo2
 Mariana,Argentina,X,,,Arabia Saudita
-Mariana,Polonia,,X,,MÃ©xico
-Mariana,Argentina,X,,,MÃ©xico
+Mariana,Polonia,X,,,México
+Mariana,Argentina,X,,,México
 Mariana,Arabia Saudita,,,X,Polonia
+Pedro,Argentina,X,,,Arabia Saudita
+Pedro,Polonia,,,X,México
+Pedro,Argentina,X,,,México
+Pedro,Arabia Saudita,,X,,Polonia
+Mariana,Países Bajos,X,,,Estados Unidos
+Mariana,Argentina,X,,,Australia
+Mariana,Francia,,,X,Polonia
+Mariana,Inglaterra,X,,,Senegal
+Mariana,Japón,,,X,Croacia
+Mariana,Brasil,X,,,República de Corea
+Mariana,Marruecos,,,X,España
+Mariana,Portugal,X,,,Suiza
+Pedro,Países Bajos,X,,,Estados Unidos
+Pedro,Argentina,,X,,Australia
+Pedro,Francia,,X,,Polonia
+Pedro,Inglaterra,,X,,Senegal
+Pedro,Japón,,,X,Croacia
+Pedro,Brasil,,X,,República de Corea
+Pedro,Marruecos,X,,,España
+Pedro,Portugal,,X,,Suiza
