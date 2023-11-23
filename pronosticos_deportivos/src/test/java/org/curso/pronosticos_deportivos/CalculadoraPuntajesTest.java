@@ -1,5 +1,6 @@
 package org.curso.pronosticos_deportivos;
 
+import java.io.File;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +17,8 @@ class CalculadoraPuntajesTest {
         LectorArchivoCsv partidos = new LectorArchivoCsv();
         LectorArchivoCsv pronosticos = new LectorArchivoCsv();
 
-        List<Partido> partido = partidos.leerPartidoCsv("/mnt/WDbk/Users/Hernan/Documents/Neoris-UTN/pronosticos-deportivos/pronosticos_deportivos/src/main/resources/Resultados.csv");
-        List<Pronostico> pronostico = pronosticos.leerPronosticoCsv("/mnt/WDbk/Users/Hernan/Documents/Neoris-UTN/pronosticos-deportivos/pronosticos_deportivos/src/main/resources/Pronosticos.csv", partido);
+        List<Partido> partido = partidos.leerPartidoCsv("."+ File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "Resultados.csv");
+        List<Pronostico> pronostico = pronosticos.leerPronosticoCsv("."+ File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "Pronosticos.csv", partido);
 
         assertEquals(3, CalculadoraPuntajes.calcularPuntaje(pronostico, partido));
     }
