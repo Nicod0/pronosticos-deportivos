@@ -7,8 +7,8 @@ import java.util.List;
 
 public class CalculadoraPuntajes {
 
-  public static Integer calcularPuntaje(List<Pronostico> pronosticos, List<Partido> partidos) {
-    Integer puntaje = pronosticos
+  public static int calcularPuntaje(List<Pronostico> pronosticos, List<Partido> partidos) {
+    int puntaje = pronosticos
         .stream()
         .mapToInt(pronostico -> pronostico.puntaje())
         .sum();
