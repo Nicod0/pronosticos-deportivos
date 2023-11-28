@@ -1,5 +1,11 @@
-Participante,Equipo1,Gan1,Empata,Gan2,Equipo2
-Mariana,Argentina,X,,,Arabia Saudita
-Mariana,Polonia,,X,,México
-Mariana,Argentina,X,,,México
-Mariana,Arabia Saudita,,,X,Polonia
+Participante,Fase,Ronda,Equipo1,Gan1,Empata,Gan2,Equipo2
+Mariana,Grupos,1,Argentina,X,,,Arabia Saudita
+Mariana,Grupos,1,Polonia,,X,,México
+Mariana,Grupos,2,Argentina,X,,,México
+Mariana,Grupos,2,Arabia Saudita,,,X,Polonia
+Pedro,Grupos,1,Argentina,X,,,Arabia Saudita
+Pedro,Grupos,1,Polonia,,,X,México
+Pedro,Grupos,2,Argentina,X,,,México
+Pedro,Grupos,2,Arabia Saudita,,X,,Polonia
+Mariana,Octavos,1,Argentina,X,,,Australia
+Pedro,Octavos,1,Argentina,,X,,Australia

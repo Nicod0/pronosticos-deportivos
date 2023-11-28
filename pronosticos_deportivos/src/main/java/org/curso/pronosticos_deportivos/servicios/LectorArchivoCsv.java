@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.curso.pronosticos_deportivos.modelos.PronosticoCsv;
 import org.curso.pronosticos_deportivos.modelos.Partido;
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class LectorArchivoCsv {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<Partido> leerPartidoCsv(String rutaPartido) {
+	public static List<Partido> leerPartidoCsv(String rutaPartido) {
 		
 		List<PartidoCsv> lineasPartidoCsv = null;
 		List<Partido> partidos = new ArrayList<Partido>();
@@ -50,10 +52,11 @@ public class LectorArchivoCsv {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Pronostico> leerPronosticoCsv(String rutaPronostico, List<Partido> partidos) {
+	public static List<Pronostico> leerPronosticoCsv(String rutaPronostico, List<Partido> partidos) {
 		
 		List<PronosticoCsv> lineasPronosticoCsv = null;
 		List<Pronostico> pronosticos = new ArrayList<Pronostico>();
+		Set<String> personas = new HashSet<>();
 		
 		try {
 			lineasPronosticoCsv = new CsvToBeanBuilder(new FileReader(rutaPronostico))
@@ -64,6 +67,8 @@ public class LectorArchivoCsv {
 			
 			for (PronosticoCsv pronosticoCsv : lineasPronosticoCsv) {
 				Pronostico pronostico = new Pronostico(pronosticoCsv, partidos);
+
+				personas.add(pronosticoCsv.getNombreJugador());
 				pronosticos.add(pronostico);
 			}
 			

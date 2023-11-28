@@ -1,5 +1,6 @@
-ronda,equipo1,cantGoles1,cantGoles2,equipo2
-1,Argentina,1,2,Arabia Saudita
-1,Polonia,0,0,México
-1,Argentina,2,0,México
-1,Arabia Saudita,0,2,Polonia
+fase,ronda,equipo1,cantGoles1,cantGoles2,equipo2
+Grupos,1,Argentina,1,2,Arabia Saudita
+Grupos,1,Polonia,0,0,México
+Grupos,2,Argentina,2,0,México
+Grupos,2,Arabia Saudita,0,2,Polonia
+Octavos,1,Argentina,2,1,Australia

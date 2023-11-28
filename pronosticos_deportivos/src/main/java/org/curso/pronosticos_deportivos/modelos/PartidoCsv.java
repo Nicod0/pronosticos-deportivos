@@ -9,18 +9,21 @@ import lombok.Setter;
 public class PartidoCsv {
 
 	@CsvBindByPosition(position = 0, required = true)
+	private String fase;
+
+	@CsvBindByPosition(position = 1, required = true)
 	private String ronda;
 	
-	@CsvBindByPosition(position = 1, required = true)
+	@CsvBindByPosition(position = 2, required = true)
 	private String NombreEquipo1;
 	
-	@CsvBindByPosition(position = 2, required = true)
+	@CsvBindByPosition(position = 3, required = true)
 	private Integer golesEquipo1;
 	
-	@CsvBindByPosition(position = 3, required = true)
+	@CsvBindByPosition(position = 4, required = true)
 	private Integer golesEquipo2;
 	
-	@CsvBindByPosition(position = 4, required = true)
+	@CsvBindByPosition(position = 5, required = true)
 	private String NombreEquipo2;
 	
 }
