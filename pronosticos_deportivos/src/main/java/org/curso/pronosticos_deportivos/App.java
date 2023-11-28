@@ -1,9 +1,10 @@
 package org.curso.pronosticos_deportivos;
 
-import org.curso.pronosticos_deportivos.modelos.Persona;
-import org.curso.pronosticos_deportivos.modelos.Ronda;
+import org.curso.pronosticos_deportivos.modelos.Partido;
+import org.curso.pronosticos_deportivos.modelos.Pronostico;
 import org.curso.pronosticos_deportivos.servicios.CalculadoraPuntajes;
 import org.curso.pronosticos_deportivos.servicios.LectorArchivoCsv;
+import org.curso.pronosticos_deportivos.servicios.Puntaje;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,20 +17,10 @@ public class App
         String rutaAbsoluta = System.getProperty("user.dir");
         System.out.println(rutaAbsoluta);
         LectorArchivoCsv lector = new LectorArchivoCsv();
-        List<Ronda> rondas = null;
-        List<Persona> personas = null;
-        try {
-        	rondas = lector.leerPartidoCsv(rutaAbsoluta + "\\src\\main\\resources\\resultados.csv");
-            personas = lector.leerPronosticoCsv(rutaAbsoluta + "\\src\\main\\resources\\\\pronosticos.csv");
-        } catch(FileNotFoundException e) {
-        	e.getMessage();
-        	e.getStackTrace();
-        } catch (IOException e) {
-        	e.getMessage();
-        	e.getStackTrace();
-		}
-        
-        CalculadoraPuntajes.motrarPuntajeFinal(rondas, personas);
+        List<Partido> partidos = lector.leerPartidoCsv(rutaAbsoluta + "\\src\\main\\resources\\resultados.csv");
+        List<Pronostico> pronosticos = lector.leerPronosticoCsv(rutaAbsoluta + "\\src\\main\\resources\\\\pronosticos.csv", partidos);
 
+        List<Puntaje> puntajes = CalculadoraPuntajes.calcularPuntajes(pronosticos, partidos);
+        CalculadoraPuntajes.mostrar(puntajes);
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ronda,equipo1,cantGoles1,cantGoles2,equipo2
 1,Argentina,1,2,Arabia Saudita
 1,Polonia,0,0,México
@@ -11,3 +12,11 @@ ronda,equipo1,cantGoles1,cantGoles2,equipo2
 2,Brasil,4,1,República de Corea
 2,Marruecos,0,0,España
 2,Portugal,6,1,Suiza
+=======
+fase,ronda,equipo1,cantGoles1,cantGoles2,equipo2
+Grupos,1,Argentina,1,2,Arabia Saudita
+Grupos,1,Polonia,0,0,MÃ©xico
+Grupos,2,Argentina,2,0,MÃ©xico
+Grupos,2,Arabia Saudita,0,2,Polonia
+Octavos,1,Argentina,2,1,Australia
+>>>>>>> main

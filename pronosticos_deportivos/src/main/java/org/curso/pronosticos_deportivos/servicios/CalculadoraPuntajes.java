@@ -1,67 +1,64 @@
 package org.curso.pronosticos_deportivos.servicios;
 
 import org.curso.pronosticos_deportivos.modelos.Partido;
-import org.curso.pronosticos_deportivos.modelos.Persona;
 import org.curso.pronosticos_deportivos.modelos.Pronostico;
-import org.curso.pronosticos_deportivos.modelos.Ronda;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CalculadoraPuntajes {
 
-	public static void motrarPuntajeFinal(List<Ronda> rondas, List<Persona> personas) {
+  public static List<Puntaje> calcularPuntajes(List<Pronostico> pronosticos, List<Partido> partidos) {
 
-		// creo un map de rondas para separar cada Ronda por número
-		Map<Integer, List<Partido>> mapRondas = rondas.stream()
-				.collect(Collectors.toMap(Ronda::getNumero, Ronda::getPartidos));
+    // Armo una lista con todos los participantes existentes
+    List<String> participantes = pronosticos
+        .stream()
+        .map(pronostico -> pronostico.getPersona())
+        .distinct()
+        .collect(Collectors.toList());
 
-		// creo un map de personas para separar cada Persona por nombre
-		Map<String, List<Pronostico>> mapPersonas = personas.stream()
-				.collect(Collectors.toMap(Persona::getNombre, Persona::getPronosticos));
+    // Por cada uno, creo un objeto Puntaje que tenga su nombre y su puntaje, y lo agrego a una lista de puntajes
+    List<Puntaje> puntajes = new ArrayList<>();
+    participantes.forEach(participante -> puntajes.add(new Puntaje(participante, calcularPuntajeDe(participante, pronosticos))));
 
-		// recorro el map de personas y muestro el puntaje de cada persona
-		for (Map.Entry<String, List<Pronostico>> entry : mapPersonas.entrySet()) {
+    // Ordeno los objetos Puntaje según sus puntos, en forma descendente
+    puntajes.sort(Comparator.comparingInt(Puntaje::getPuntos).reversed());
 
-			System.out.println("Nombre: " + entry.getKey() + " -> Puntaje: "
-					+ sumarPuntajePorPersona(entry.getValue(), mapRondas));
-		}
+    return puntajes;
+  }
 
-	}
+  public static void mostrar(List<Puntaje> puntajes) {
+    puntajes.forEach(puntaje -> System.out.println(puntaje.getPersona() + ": " + puntaje.getPuntos()));
+  }
 
-	// si el resultado del partido es igual al pronostico sumamos 1
-	private static int calcularPuntajeDePartido(Partido partido, Pronostico pronostico) {
-		if (partido.resultado() == pronostico.getResultado()) {
-			return 1;
-		}
-		return 0;
-	}
+  public static Integer calcularPuntajeDe(String persona, List<Pronostico> pronosticos) {
+    List<Pronostico> pronosticosDeLaPersona = getPronosticosFrom(persona, pronosticos);
+    Integer puntaje = pronosticosDeLaPersona
+        .stream()
+        .mapToInt(pronostico -> pronostico.puntaje())
+        .sum();
 
-	// sumamos el puntaje por Persona
-	private static int sumarPuntajePorPersona(List<Pronostico> pronosticos, Map<Integer, List<Partido>> mapRondas) {
+    return puntaje;
+  }
 
-		int puntajePorPersona = 0;
+  public static List<Pronostico> getPronosticosFrom(String persona, List<Pronostico> pronosticos) {
+    return pronosticos
+        .stream()
+        .filter(pronostico -> pronostico.getPersona().equals(persona))
+        .collect(Collectors.toList());
+  }
 
-		for (Map.Entry<Integer, List<Partido>> entry : mapRondas.entrySet()) {
-			int sumaPartido = 0;
-			for (Partido partido : entry.getValue()) {
-				if (buscarPronostico(partido, pronosticos) != null) {
-					sumaPartido += calcularPuntajeDePartido(partido, buscarPronostico(partido, pronosticos));
-				}
-			}
-			puntajePorPersona += sumaPartido;
-		}
-		return puntajePorPersona;
-	}
+  public static List<Pronostico> getPronosticosFromRound(String ronda, List<Pronostico> pronosticos) {
+    return pronosticos
+        .stream()
+        .filter(pronostico -> pronostico.getRonda().getNroRonda().equals(ronda))
+        .collect(Collectors.toList());
+  }
 
-	// buscamos si el partido esta en la lista de pronosticos
-	private static Pronostico buscarPronostico(Partido partido, List<Pronostico> pronosticos) {
-		
-		return pronosticos.stream()
-	            .filter(pronostico -> pronostico.getPartido().getEquipo1().equals(partido.getEquipo1()))
-	            .filter(pronostico -> pronostico.getPartido().getEquipo2().equals(partido.getEquipo2()))
-	            .findFirst()
-	            .orElse(null);
-	}
+  public static List<Pronostico> getPronosticosFromPhase(String fase, List<Pronostico> pronosticos) {
+    return pronosticos
+        .stream()
+        .filter(pronostico -> pronostico.getRonda().getFase().equals(fase))
+        .collect(Collectors.toList());
+  }
 }

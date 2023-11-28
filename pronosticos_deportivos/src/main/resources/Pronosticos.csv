@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Participante,Equipo1,Gan1,Empata,Gan2,Equipo2
 Mariana,Argentina,X,,,Arabia Saudita
 Mariana,Polonia,X,,,México
@@ -23,3 +24,16 @@ Pedro,Japón,,,X,Croacia
 Pedro,Brasil,,X,,República de Corea
 Pedro,Marruecos,X,,,España
 Pedro,Portugal,,X,,Suiza
+=======
+Participante,Fase,Ronda,Equipo1,Gan1,Empata,Gan2,Equipo2
+Mariana,Grupos,1,Argentina,X,,,Arabia Saudita
+Mariana,Grupos,1,Polonia,,X,,MÃ©xico
+Mariana,Grupos,2,Argentina,X,,,MÃ©xico
+Mariana,Grupos,2,Arabia Saudita,,,X,Polonia
+Pedro,Grupos,1,Argentina,X,,,Arabia Saudita
+Pedro,Grupos,1,Polonia,,,X,MÃ©xico
+Pedro,Grupos,2,Argentina,X,,,MÃ©xico
+Pedro,Grupos,2,Arabia Saudita,,X,,Polonia
+Mariana,Octavos,1,Argentina,X,,,Australia
+Pedro,Octavos,1,Argentina,,X,,Australia
+>>>>>>> main
