@@ -9,19 +9,21 @@ import java.util.List;
 
 @Getter @Setter
 public class Pronostico {
-	
+
+	private String persona;
+	private Ronda ronda;
 	private Partido partido;
 	private ResultadoEnum resultado;
 	
 	public Pronostico(PronosticoCsv pronosticoCsv, List<Partido> partidos) {
 		Partido partidoPronosticado = partidos
 				.stream()
-				.filter(partido -> partido.getEquipo1().getNombre().equalsIgnoreCase(pronosticoCsv.getNombreEquipo1()))
-				.filter(partido -> partido.getEquipo2().getNombre().equalsIgnoreCase(pronosticoCsv.getNombreEquipo2()))
+				.filter(partido -> partido.correspondeA(pronosticoCsv))
 				.findFirst()
 				.orElse(new Partido());
 
 		this.setPartido(partidoPronosticado);
+		this.setPersona(pronosticoCsv.getNombreJugador());
 		this.setResultado(convertirResultado(pronosticoCsv));
 	}
 	

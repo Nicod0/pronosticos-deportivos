@@ -12,14 +12,17 @@ import org.curso.pronosticos_deportivos.servicios.CalculadoraPuntajes;
 import org.curso.pronosticos_deportivos.servicios.LectorArchivoCsv;
 
 class CalculadoraPuntajesTest {
+
     @Test
-    void deberiaRetornarTres() {
+    void elPuntajeDe4ResultadosCorrectosEs4() {
         LectorArchivoCsv partidos = new LectorArchivoCsv();
         LectorArchivoCsv pronosticos = new LectorArchivoCsv();
 
         List<Partido> partido = partidos.leerPartidoCsv("."+ File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "Resultados.csv");
         List<Pronostico> pronostico = pronosticos.leerPronosticoCsv("."+ File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "Pronosticos.csv", partido);
 
-        assertEquals(3, CalculadoraPuntajes.calcularPuntaje(pronostico, partido));
+        Integer puntajeDeMariana = CalculadoraPuntajes.calcularPuntajeDe("Mariana", pronostico);
+
+        assertEquals(4, puntajeDeMariana);
     }
 }
